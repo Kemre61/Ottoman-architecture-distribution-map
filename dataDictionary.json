@@ -1,0 +1,13 @@
+{
+    "building_name": "Name of the building",
+    "architect": "Architect who designed the building",
+    "building_type": "Type of the building (mosque, palace, etc.)",
+    "location": "Location of the building as written in the Wikipedia infobox",
+    "latitude": "Latitude coordinate of the building",
+    "longitude": "Longitude coordinate of the building",
+    "construction_start": "Year construction of the building started",
+    "construction_end": "Year construction of the building was completed",
+    "construction_time": "Duration of construction in years, calculated with: (construction_end)-(construction_start) ",
+    "renovation_date": "Year of renovation or restoration if available",
+    "wikipedia_url": "Wikipedia page used as the data source"
+}
