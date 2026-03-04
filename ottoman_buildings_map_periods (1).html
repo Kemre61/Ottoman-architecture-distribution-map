@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_62a725fda80229fb8301fb782d285441 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  background: white;
+  padding: 10px 12px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  max-height: 60vh;
+  overflow-y: auto;
+">
+  <div style="font-weight:600; font-size:13px; margin-bottom:8px;">
+    Periods 
+  </div>
+  
+      <div style="display:flex; align-items:center; margin-bottom:4px;">
+        <div style="width:12px; height:12px; background:#1f77b4; margin-right:8px; border:1px solid #333;"></div>
+        <div style="font-size:12px;">1500-1550 (8)</div>
+      </div>
+    
+      <div style="display:flex; align-items:center; margin-bottom:4px;">
+        <div style="width:12px; height:12px; background:#ff7f0e; margin-right:8px; border:1px solid #333;"></div>
+        <div style="font-size:12px;">1550-1600 (36)</div>
+      </div>
+    
+      <div style="display:flex; align-items:center; margin-bottom:4px;">
+        <div style="width:12px; height:12px; background:#2ca02c; margin-right:8px; border:1px solid #333;"></div>
+        <div style="font-size:12px;">1850-1900 (7)</div>
+      </div>
+    
+      <div style="display:flex; align-items:center; margin-bottom:4px;">
+        <div style="width:12px; height:12px; background:#d62728; margin-right:8px; border:1px solid #333;"></div>
+        <div style="font-size:12px;">1900-1923 (5)</div>
+      </div>
+    
+</div>
+    
+            <div class="folium-map" id="map_62a725fda80229fb8301fb782d285441" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_62a725fda80229fb8301fb782d285441 = L.map(
+                "map_62a725fda80229fb8301fb782d285441",
+                {
+                    center: [20.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_12b220a94932e75b961e00d2e71edb16 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_12b220a94932e75b961e00d2e71edb16.addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            var pane_2f4af64340b7331b78708c446ce8c2ac = map_62a725fda80229fb8301fb782d285441.createPane(
+                "polygons");
+            pane_2f4af64340b7331b78708c446ce8c2ac.style.zIndex = 400;
+            
+                pane_2f4af64340b7331b78708c446ce8c2ac.style.pointerEvents = 'none';
+            
+        
+    
+            var pane_93abdfd8cde0f25ad74abe0a780f22e2 = map_62a725fda80229fb8301fb782d285441.createPane(
+                "markers");
+            pane_93abdfd8cde0f25ad74abe0a780f22e2.style.zIndex = 650;
+            
+                pane_93abdfd8cde0f25ad74abe0a780f22e2.style.pointerEvents = 'none';
+            
+        
+    
+            var polygon_610e82dacd42f4ac0024fa05edc08c0e = L.polygon(
+                [[31.781639, 35.2305], [40.455073, 19.485369], [40.469049, 19.490932], [41.042, 28.9376], [41.02667, 29.01611], [31.781639, 35.2305]],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            var polygon_68ded068929e5d3ec827d96b2c052ac9 = L.polygon(
+                [[33.5125, 36.29139], [39.55, 21.77111], [43.83333, 17.0], [45.19583, 33.37722], [37.9094, 40.2342], [33.5125, 36.29139]],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            var polygon_eaa2aaa0429ef43dd3b9464675fcdbb4 = L.polygon(
+                [[37.06028, 37.37556], [41.0376083, 28.9964361], [41.0494111, 29.0099361], [41.047481, 29.02745], [41.0425, 29.04], [37.06028, 37.37556]],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            var polygon_4660f246a056770a19fd149cb1eb1da9 = L.polygon(
+                [[40.762806, 29.919611], [41.014568, 28.97414], [41.0503, 28.94], [41.37594, 33.77875], [40.762806, 29.919611]],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            var circle_marker_8e5bdbe9311812c4104dd9ee0e12a602 = L.circleMarker(
+                [41.0425, 29.04],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_8e5bdbe9311812c4104dd9ee0e12a602.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Beylerbeyi Palace</b> (1861)</div>
+      <div>Hagop Balyan , Sarkis Balyan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_89e99aedcea83842c0d3b66db61ae87b = L.circleMarker(
+                [41.04444, 29.01667],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_89e99aedcea83842c0d3b66db61ae87b.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Çırağan Palace</b> (1867)</div>
+      <div>Nigoğayos Balyan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_21e310b246e280213754a7ddf7d70f64 = L.circleMarker(
+                [41.0376083, 28.9964361],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_21e310b246e280213754a7ddf7d70f64.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Dolmabahçe Clock Tower</b> (1895)</div>
+      <div>Sarkis Balyan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bae510b50f06f7d73864137418197725 = L.circleMarker(
+                [41.047481, 29.02745],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_bae510b50f06f7d73864137418197725.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Esma Sultan Mansion</b> (1875)</div>
+      <div>Sarkis Balyan Redevelopment: Gökhan Avcıoğlu</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_250262014727d2cd749f74b455fdb308 = L.circleMarker(
+                [41.04556, 29.02028],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_250262014727d2cd749f74b455fdb308.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Feriye Palace</b> (1871)</div>
+      <div>Sarkis Balyan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a7b3fc6a0e267b7014ca58f2af8bf1d1 = L.circleMarker(
+                [37.06028, 37.37556],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_a7b3fc6a0e267b7014ca58f2af8bf1d1.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Liberation Mosque</b> (1893)</div>
+      <div>Sarkis Balyan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_127c191361c166c3a026fdcd4e937e7f = L.circleMarker(
+                [41.0494111, 29.0099361],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_127c191361c166c3a026fdcd4e937e7f.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Yıldız Hamidiye Mosque</b> (1886)</div>
+      <div>Sarkis Balyan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a1108a7b0b4051c7da4f7488ad66e1ec = L.circleMarker(
+                [36.197444, 37.15775],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_a1108a7b0b4051c7da4f7488ad66e1ec.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Al-Adiliyah Mosque</b> (1566)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d89249e247e0df711596179134ed6957 = L.circleMarker(
+                [41.018797, 29.023862],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_d89249e247e0df711596179134ed6957.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Atik Valide Mosque</b> (1586)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2fa4a6d8587c01b03df58986881a54ed = L.circleMarker(
+                [37.9094, 40.2342],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_2fa4a6d8587c01b03df58986881a54ed.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Behram Pasha Mosque</b> (1572)</div>
+      <div>Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_92632db719b6679094c3caf2ef1cfde4 = L.circleMarker(
+                [41.00964, 28.97883],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_92632db719b6679094c3caf2ef1cfde4.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Caferağa Medrese</b> (1559)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f349116190d14100274707b32708129b = L.circleMarker(
+                [31.781639, 35.2305],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_f349116190d14100274707b32708129b.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Damascus Gate</b> (1537)</div>
+      <div>None</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fb4a7660cd14dbc1feef8a70316fcefd = L.circleMarker(
+                [41.042, 28.9376],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_fb4a7660cd14dbc1feef8a70316fcefd.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Defterdar Mosque</b> (1542)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1139262725641b3bf0695284a8153562 = L.circleMarker(
+                [41.0349917, 21.338475],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_1139262725641b3bf0695284a8153562.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Gazi Hajdar Kadi Mosque</b> (1561)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ef4852688b60cec15d1421f32b56c9ff = L.circleMarker(
+                [41.006, 28.922694],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_ef4852688b60cec15d1421f32b56c9ff.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Hadim Ibrahim Pasha Mosque</b> (1551)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eb97741ee9d255b0a6e2311762210f26 = L.circleMarker(
+                [41.00732, 28.97928],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_eb97741ee9d255b0a6e2311762210f26.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Hürrem Sultan Hamam</b> (1556)</div>
+      <div>None</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0557b153d618e6308e2f2d1372ebf05b = L.circleMarker(
+                [43.83333, 17.0],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_0557b153d618e6308e2f2d1372ebf05b.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Hajji Ahmed the Ducat Minter's Mosque</b> (1574)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7e828f6df595f76527c45d71c31d9e3f = L.circleMarker(
+                [41.008556, 28.941833],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_7e828f6df595f76527c45d71c31d9e3f.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Haseki Sultan Complex</b> (1538)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fd29fa236af754de876c5efd4f89dfee = L.circleMarker(
+                [41.10002, 29.06587],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_fd29fa236af754de876c5efd4f89dfee.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>İskender Pasha Mosque, Kanlıca</b> (1559)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9bc61a39eb35c5c1fcfff8bf3d75540c = L.circleMarker(
+                [45.19583, 33.37722],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_9bc61a39eb35c5c1fcfff8bf3d75540c.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Juma-Jami Mosque</b> (1564)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a356ab3290db41a4e565274181fb22c2 = L.circleMarker(
+                [41.68672, 26.55899],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_a356ab3290db41a4e565274181fb22c2.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Kanuni Bridge</b> (1554)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_47870693e8ef1174de4b74e0bc8a0d00 = L.circleMarker(
+                [41.021944, 28.570556],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_47870693e8ef1174de4b74e0bc8a0d00.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Kanuni Sultan Suleiman bridge (Istanbul)</b> (1567)</div>
+      <div>None</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6435de07e6f5d0c777f77a03b30be7b9 = L.circleMarker(
+                [41.02111, 28.92917],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_6435de07e6f5d0c777f77a03b30be7b9.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Kara Ahmed Pasha Mosque</b> (1572)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_487376cce0e7230655f1923ac7195c84 = L.circleMarker(
+                [43.34111, 17.81389],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_487376cce0e7230655f1923ac7195c84.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Karađoz Bey Mosque</b> (1557)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ec2a6b51fee6e4fc658c8a0a6f73e0da = L.circleMarker(
+                [41.026373, 28.980928],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_ec2a6b51fee6e4fc658c8a0a6f73e0da.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Kılıç Ali Pasha Complex</b> (1580)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e82f26ec3ca69299afd1e56212df7ba2 = L.circleMarker(
+                [40.98889, 28.77222],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_e82f26ec3ca69299afd1e56212df7ba2.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Küçükçekmece Bridge</b> (1560)</div>
+      <div>None</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_693c8808ddc5f9124e725286589db8fa = L.circleMarker(
+                [43.78, 19.29],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_693c8808ddc5f9124e725286589db8fa.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Mehmed Paša Sokolović Bridge</b> (1577)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_457c052bfee61eef5558d256d57c12c7 = L.circleMarker(
+                [41.0219, 28.9434],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_457c052bfee61eef5558d256d57c12c7.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Mesih Mehmed Pasha Mosque</b> (1585)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_51131199157069e123541c8acce202f4 = L.circleMarker(
+                [41.02667, 29.01611],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_51131199157069e123541c8acce202f4.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Mihrimah Sultan Mosque, Üsküdar</b> (1548)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_85b4bd762c83f76296295d5c5af8a8fd = L.circleMarker(
+                [41.0321, 28.9906],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_85b4bd762c83f76296295d5c5af8a8fd.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Molla Çelebi Mosque</b> (1584)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e3cb7fcc12d6953aebd46e719795b983 = L.circleMarker(
+                [40.469049, 19.490932],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_e3cb7fcc12d6953aebd46e719795b983.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Muradie Mosque</b> (1542)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a0b28fbde73af0799b3ec0aaf3e64c28 = L.circleMarker(
+                [39.55, 21.77111],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_a0b28fbde73af0799b3ec0aaf3e64c28.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Osman Shah Mosque</b> (1570)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_263d37dffcf96de9529e7b517cf0c3ff = L.circleMarker(
+                [40.7628, 29.931],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_263d37dffcf96de9529e7b517cf0c3ff.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Pertev Pasha Mosque</b> (1580)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eb7fe45526d493c2f55f3a42d68cba17 = L.circleMarker(
+                [41.0466, 28.966],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_eb7fe45526d493c2f55f3a42d68cba17.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Piyale Pasha Mosque</b> (1573)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_145f40475e772cf40193e460dc9fb08c = L.circleMarker(
+                [41.67556, 26.55556],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_145f40475e772cf40193e460dc9fb08c.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Rüstem Pasha Caravanserai (Edirne)</b> (1561)</div>
+      <div>Ertan Cakirlar</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7d93f51dec6601f218dd9e4e54e8b4fa = L.circleMarker(
+                [37.514361, 34.050139],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_7d93f51dec6601f218dd9e4e54e8b4fa.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Rüstem Pasha Caravanserai (Ereğli)</b> (1552)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b892f513f007936fcf924670a8ad0a71 = L.circleMarker(
+                [41.013167, 28.972444],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_b892f513f007936fcf924670a8ad0a71.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Rüstem Pasha Medrese</b> (1551)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ee5bababfde55eafee4e29471cb8331 = L.circleMarker(
+                [41.0175, 28.96861],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_4ee5bababfde55eafee4e29471cb8331.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Rüstem Pasha Mosque</b> (1563)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_42fb39ca69dd814af03e73c253f01330 = L.circleMarker(
+                [41.013806, 28.957167],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_42fb39ca69dd814af03e73c253f01330.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Şehzade Mosque</b> (1548)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_78984e743197dea86da8080bf43853bc = L.circleMarker(
+                [41.67806, 26.55944],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_78984e743197dea86da8080bf43853bc.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Selimiye Mosque, Edirne</b> (1574)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0c6fb80c12956fb891a970ffc271a664 = L.circleMarker(
+                [41.02583, 29.01139],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_0c6fb80c12956fb891a970ffc271a664.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Şemsi Pasha Mosque</b> (1581)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bcea75430064f957f4e8cd6d615b3118 = L.circleMarker(
+                [41.042343, 29.006245],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_bcea75430064f957f4e8cd6d615b3118.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Sinan Pasha Mosque (Istanbul)</b> (1555)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7acc942e10d272b4c2a9bf8f7b311a76 = L.circleMarker(
+                [41.025, 28.96778],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_7acc942e10d272b4c2a9bf8f7b311a76.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Sokollu Mehmed Pasha Mosque, Azapkapı</b> (1577)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b096976995024a8b29c26292f78d0271 = L.circleMarker(
+                [41.02222, 28.57611],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_b096976995024a8b29c26292f78d0271.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Sokollu Mehmed Pasha Mosque, Büyükçekmece</b> (1567)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_73cae6f79c5b6aa4104ffec509da40ef = L.circleMarker(
+                [41.00472, 28.97222],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_73cae6f79c5b6aa4104ffec509da40ef.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Sokollu Mehmed Pasha Mosque, Kadırga</b> (1571)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_044edaa93b27a4cff3988fd0745f051a = L.circleMarker(
+                [33.5125, 36.29139],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_044edaa93b27a4cff3988fd0745f051a.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Sulaymaniyya Takiyya</b> (1559)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_254a82615f7ed167bf951f6d3743fdf1 = L.circleMarker(
+                [41.0159, 28.9658],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_254a82615f7ed167bf951f6d3743fdf1.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Süleymaniye Hamam</b> (1557)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0cc281b914715dbd820025feb8b577c1 = L.circleMarker(
+                [41.01611, 28.96389],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_0cc281b914715dbd820025feb8b577c1.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Süleymaniye Mosque</b> (1557)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_696b2e25e28897216bddf57e992e8fc4 = L.circleMarker(
+                [40.455073, 19.485369],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_696b2e25e28897216bddf57e992e8fc4.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Vlorë Castle</b> (1537)</div>
+      <div>None</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9a24693151bd009899d6af76085900fc = L.circleMarker(
+                [41.026556, 28.951333],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_9a24693151bd009899d6af76085900fc.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Yavuz Selim Mosque</b> (1527)</div>
+      <div>None</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5270784bbe8143aebdae1e3169ccb4cf = L.circleMarker(
+                [41.044778, 28.935821],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_5270784bbe8143aebdae1e3169ccb4cf.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Zal Mahmud Pasha Mosque</b> (1590)</div>
+      <div>Mimar Sinan</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_90879c973da0a95ac67846095414575d = L.circleMarker(
+                [41.014568, 28.97414],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_90879c973da0a95ac67846095414575d.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Grand Post Office</b> (1909)</div>
+      <div>Vedat Tek</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bca80924ecbaf9700b0bfa5a2c1c4cc6 = L.circleMarker(
+                [41.0503, 28.94],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_bca80924ecbaf9700b0bfa5a2c1c4cc6.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Haliç Congress Center</b> (1923)</div>
+      <div>Vedat Tek</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c97edaa69a40aa00ba57cd00ddfc256a = L.circleMarker(
+                [40.762806, 29.919611],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_c97edaa69a40aa00ba57cd00ddfc256a.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>İzmit Clock Tower</b> (1902)</div>
+      <div>Vedat Tek</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_28fa2b09164550eed9d6050365c2662f = L.circleMarker(
+                [41.37594, 33.77875],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_28fa2b09164550eed9d6050365c2662f.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Kastamonu Governor's Office</b> (1901)</div>
+      <div>Vedat Tek</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ff9e22f013c8d7a91f0807f149ed7ff5 = L.circleMarker(
+                [41.05035, 28.989323],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_62a725fda80229fb8301fb782d285441);
+        
+    
+            circle_marker_ff9e22f013c8d7a91f0807f149ed7ff5.bindTooltip(
+                `<div>
+                     
+    <div style="font-size:12px;">
+      <div><b>Vedat Tek House</b> (1914)</div>
+      <div>Vedat Tek</div>
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
